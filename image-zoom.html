@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .showbtn {
+            background: red;
+            display: inline-block;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        #popImg {
+            transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            transform: scale(0);
+        }
+
+        span.close-img {
+            display: inline-block;
+            position: absolute;
+            color: #fff;
+            padding: 4px 8px;
+            background: red;
+            left: 5px;
+            top: 5px;
+            z-index: 99999
+        }
+
+        .animationin {
+            transform: scale(1) !important
+        }
+
+        .animationOut {
+            transform: scale(0) !important
+        }
+
+        /*.animationOut{
+        animation: zoomout 0.8s;
+        -webkit-animation: zoomout 0.8s;
+    }
+
+@keyframes zoomout{
+    0%{transform: scale(1)}
+    50%{transform: scale(0)}
+}  
+@-webkit-keyframes zoomout{
+    from{transform: scale(1)}
+    to{transform: scale(0)}
+}
+
+.animationin{
+        animation: zoomin 0.8s;
+        -webkit-animation: zoomin 0.8s;
+    }
+@keyframes zoomin{
+    from{transform: scale(0)}
+    to{transform: scale(0)}
+}  
+@-webkit-keyframes zoomin{
+    from{transform: scale(0)}
+    to{transform: scale(0)}
+} */
+    .responsive{
+        margin: 0 auto;
+        text-align: center
+    }
+    .responsive .gallery img {
+        width: 100px;
+        float: left;
+        border: 1px solid #f1f1f1;
+        border-radius: 5px;
+    }
+    .responsive .gallery a {
+        padding-left: 0px;
+        display: inline-block;
+    }
+    .zoom-img, .gallery {
+        position: relative;
+    }
+    .yr-zoom{
+        transition: all 0.5s ease;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        transform: scale(5);
+    }
+
+    </style>
+</head>
+
+<body>
+    <a class="showbtn" href="javascript:void(0);" onclick="showFunction();">
+        Click to show image
+    </a>
+    <div class="zoom-img">
+        <span class="close-img" onclick="hideFunction();">X</span>
+        <img src="New folder/img/img_forest.jpg"  id="popImg">
+    </div>
+
+
+    <div class="responsive">
+        <div class="gallery">
+            <a href="/" class="test">
+                <img src="New folder/img/img_fjords.jpg" alt="Trolltunga Norway" class="test">
+            </a>
+            <a href="/"  class="test">
+                <img src="New folder/img/img_forest.jpg" alt="Forest" class="test">
+            </a>
+            <a href="/"  class="test">
+                <img src="New folder/img/img_lights.jpg" alt="Northern Lights" class="test">
+            </a>
+            <a href="/"  class="test">
+                <img src="New folder/img/img_mountains.jpg" alt="Mountains" class="test">
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function init() {
+        var thumb = document.querySelectorAll('.gallery a');
+        //console.log(thumb)
+        var eventDef = function(){
+            event.preventDefault();
+            event.stopPropagation();
+                       
+            if(event.currentTarget.className=="yr-zoom"){
+                resetZoom(); 
+                //alert('hello');                
+            }else{
+                this.classList.add('yr-zoom')  
+                //alert('else'); 
+            }
+            console.log(event.target.parentNode.className);
+        }
+        for(var i = 0; i < thumb.length; i++){
+            thumb[i].addEventListener('click', eventDef);
+        }
+        var resetZoom = function(){
+            for(var i = 0; i < thumb.length; i++){
+            thumb[i].classList.remove('yr-zoom')
+        }
+        }
+    document.body.addEventListener('click', function(e){
+        console.log(e);
+        var arr=['test yr-zoom','test'];
+        if(arr.indexOf(e.target.className)==-1){
+           for(var i = 0; i < thumb.length; i++){
+           thumb[i].classList.remove('yr-zoom')
+       }
+    }
+        }, true); 
+
+
+
+
+
+        function showFunction() {
+            var addCss = document.getElementById('popImg');
+            addCss.classList.remove("animationOut");
+            addCss.classList.add("animationin");
+        }
+        function hideFunction() {
+            var addCss = document.getElementById('popImg');
+            addCss.classList.remove("animationin");
+            addCss.classList.add("animationOut");
+            //addCss.style.display="none";
+        }
+    }
+window.onload = init;
+
+    </script>
+
+</body>
+
+</html>

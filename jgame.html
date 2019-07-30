@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 220px;
+            height: 220px;
+            background:chocolate;
+            margin: 20% auto;
+            position: relative;
+        }
+        .rollbox{
+            width: 40px;
+            height: 40px;
+            border-radius:50%;
+            background:#0216b5;
+            border: 1px solid #999;  
+            position: absolute;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="rollbox" id="rollbox"></div>
+    </div>
+    
+
+
+
+    
+    <script>
+    var clk = window.addEventListener("click", myClick);
+    function myClick(){
+        var mainBox = document.getElementById('box');
+        document.getElementById('box').style.backgroundColor ="red";
+        var elem = document.getElementById('rollbox');
+        var bollTop = 0;
+        var bollLeft = 100;
+        var valLeft = true;
+        var valRight = true;
+        var valTop = true;
+        var ofsLeft = elem.offsetLeft;
+        var ofsTop = elem.offsetTop; 
+        var boxWidth = mainBox.offsetWidth - elem.offsetWidth;
+        var boxHeight = mainBox.offsetHeight - elem.offsetHeight;
+        console.log(boxWidth);
+        var duration = setInterval(rollBall, 1);
+        function rollBall(){
+            if(valLeft == true && valRight == true && valTop == true){
+                bollLeft++;
+                bollTop++;
+                elem.style.left = bollLeft + 'px';
+                elem.style.top = bollTop + 'px';
+                if(bollLeft == boxWidth){
+                    valLeft = false;
+                    elem.style.background = "#abcc00"
+                }
+            }else if(valLeft == false && valRight == true && valTop == true){
+                bollLeft--;
+                bollTop++;
+                elem.style.left = bollLeft + 'px';
+                elem.style.top = bollTop + 'px';
+                if(bollTop == boxHeight){
+                    valRight = false;
+                }
+            }else if(valLeft == false && valRight == false && valTop == true ){
+                bollLeft--;
+                bollTop--;
+                elem.style.left = bollLeft + 'px';
+                elem.style.top = bollTop + 'px';
+                if(bollLeft == 0){
+                    valTop = false;
+                }
+            }
+            else if(valLeft == false && valRight == false && valTop == false ){
+                bollLeft++;
+                bollTop--;
+                elem.style.left = bollLeft + 'px';
+                elem.style.top = bollTop + 'px';
+                if(bollLeft == boxWidth/2){
+                    valTop = true;
+                    valRight = true;
+                    valLeft = true
+                }
+            }    
+        }
+    }
+    
+    
+    </script>
+</body>
+</html>

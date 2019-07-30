@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    img{margin:0}
+    div.gallery {
+      border: 1px solid #ccc;
+    }
+    .gallery a {
+        display: block;
+    }
+    div.gallery:hover {
+      border: 1px solid #777;
+    }
+
+    div.gallery img {
+      width: 100%;
+      height: auto;
+    }
+
+    div.desc {
+      padding: 15px;
+      text-align: center;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .responsive {
+      padding: 0 6px;
+      float: left;
+      width: 24.99999%;
+      margin-top: 20%;
+    }
+
+    @media only screen and (max-width: 700px) {
+      .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+      }
+    }
+
+    @media only screen and (max-width: 500px) {
+      .responsive {
+        width: 100%;
+      }
+    }
+
+    .clearfix:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .imgPopup {
+      display: inline-block;
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 10px 10px 6px;
+      position: absolute;
+      visibility: hidden;
+    }
+
+    .icon {
+      border: solid #ccc;
+      border-width: 0 1px 1px 0;
+      display: inline-block;
+      padding: 5px;
+      position: absolute;
+      background: #fff;
+    }
+
+    .right {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      top: 50%;
+      right: -7px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Image Gallery</h2>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a href="img/img_fjords.jpg">
+        <img src="img/img_fjords.jpg" alt="Trolltunga Norway" width="300" height="200">
+      </a>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a href="img/img_forest.jpg">
+        <img src="img/img_forest.jpg" alt="Forest" width="600" height="400">
+      </a>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a href="img/img_lights.jpg">
+        <img src="img/img_lights.jpg" alt="Northern Lights" width="600" height="400">
+      </a>
+    </div>
+  </div>
+
+  <div class="responsive">
+    <div class="gallery">
+      <a href="img/img_mountains.jpg">
+        <img src="img/img_mountains.jpg" alt="Mountains" width="600" height="400">
+      </a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+  <div class="imgPopup" id="imgPopup">
+    <img src="img/img_lights.jpg" class="lightsImg">
+    <i class="icon right"></i>
+  </div>
+
+
+
+
+  <script>
+    var item = document.querySelectorAll('.gallery a');
+    var itemBox = document.querySelector('.gallery');
+    //console.log();
+    var popupBox = document.getElementById('imgPopup');
+    var preventClick = function () {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    var createTemp = function () {
+      var urlPath = this.getAttribute('href');
+      popupBox.getElementsByTagName('img')[0].src = urlPath;
+      imgPos(this);
+      popupBox.style.visibility = "visible";
+      //console.log(event.stopPropagation());
+    }
+    
+    var hidePopup = function () {
+      popupBox.style.visibility = "hidden"
+    }
+    var imgPos = function (obj) {
+      var elposTop=obj.offsetTop;
+      var elposLeft= obj.offsetLeft;
+      var wndHeight = window.innerHeight;
+      var wndWidth = window.innerWidth;
+      var imgHeight = popupBox.offsetHeight;
+      var imgWidth = popupBox.offsetWidth;
+      var topPos = event.pageY;
+      var leftPos = event.pageX;
+      var itemBoxH = itemBox.offsetHeight/2;
+     
+      if((elposTop + itemBoxH) >= topPos){
+        topPos= elposTop - itemBoxH*2;
+        console.log(elposTop - itemBoxH*2)
+      }else{
+        topPos= elposTop + itemBoxH*2; 
+        console.log('Yousuf');
+      }
+      if ((leftPos+imgWidth) >= wndWidth){
+        leftPos= leftPos-imgWidth
+      }
+      popupBox.style.top = topPos + 30 +'px';
+      popupBox.style.left = leftPos + 30 +'px';
+    }
+    for (var i = 0; i < item.length; i++) {
+      item[i].addEventListener('click', preventClick);
+      item[i].addEventListener('mousemove', createTemp);
+      item[i].addEventListener('mouseleave', hidePopup);
+    }
+
+  </script>
+
+</body>
+
+</html>

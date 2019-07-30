@@ -1,0 +1,82 @@
+.yr-theme{
+    background: #000;
+    color:#fff;
+}
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.logo span{
+    color:#00c2ff;
+}
+a.contact-no {
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 0;
+    display: inline-block;
+}
+.mail-contact a {
+    color: #fff;
+    font-weight: 600;
+    padding: 10px;
+}
+.mail-contact ul{
+    margin: 0px;
+}
+.mail-contact ul li {
+    list-style: none;
+    margin: 0;
+    display: inline-block;
+    padding: 10px;
+}
+.mail-contact {
+    display: flex;
+}
+.title-heading {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 20px;
+    color: steelblue;
+}
+.service-box{
+    margin-bottom: 50px;
+}
+.service-box h1 {
+    text-align: center;
+    margin: 30px 0 60px;
+    color: #00c2ff;
+    position: relative;
+}
+.service-box h1:after {
+    content: " ";
+    position: absolute;
+    border: 2px solid #0696c3;
+    width: 10%;
+    top: 59px;
+    left: 45%;
+    right: auto;
+}
+.bottom-shadow {
+    margin-bottom: 60px;
+}
+.bottom-shadow:after {
+    content: " ";
+    position: absolute;
+    box-shadow: 0px 5px 10px 1px #e4e4e4;
+    padding: 3px;
+    width: 80%;
+    margin: 0 auto;
+    bottom: -40px;
+    left: 0;
+    right: 0;
+}
+
+
+
+
+
+@media only screen and (width:360px){
+
+}

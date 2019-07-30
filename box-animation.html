@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .color-box {
+            background: cornflowerblue;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn {
+            background: brown;
+            color: #fff;
+            padding: 5px 10px;
+            border: 0;
+            margin-top: 30px;
+        }
+
+        #animation {
+            padding: 2px;
+            box-sizing: border-box;
+            position: absolute;
+            background-color: #b70000;
+            width: 40px;
+            height: 40px;
+            border-radius: 0%;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color-box" id="color-box">
+        <span id="animation">=</span>
+    </div>
+    <button class="btn" id="button">Click to Change</button>
+
+
+    <script>
+        document.getElementById("button").addEventListener("click", changeBox1);
+        function changeBox1() {
+            var mainBox = document.getElementById('color-box');
+            mainBox.style.background = "#5a0000";
+            var elem = document.getElementById('animation');
+            var topPos = 0;
+            var leftPos = 0;
+            var topFlag = true;
+            var leftFlag = true;
+            var ofLeft = elem.offsetLeft;
+            var ofTop = elem.offsetTop;
+            var boxhg = mainBox.offsetHeight - elem.offsetHeight;
+            var boxwt = mainBox.offsetWidth - elem.offsetWidth;
+            //console.log(boxwt);
+
+            var dueration = setInterval(bollroll, 5);
+            function bollroll() {
+                if (leftFlag == true && topFlag == true) {
+                    leftPos++;
+                    elem.style.top = topPos + 'px';
+                    elem.style.left = leftPos + 'px';
+                    elem.style.background = "red";
+                    if (leftPos == boxwt) {
+                        leftFlag = false;
+                    }
+                } else if (leftFlag == false && topFlag == true) {
+                    if(leftPos==0){
+                        topPos--;
+                        if(topPos==0){
+                            leftFlag = true;
+                        }
+                    }else{
+                        topPos++;
+                    }
+                    
+                    elem.style.top = topPos + 'px';
+                    elem.style.left = leftPos + 'px';
+                    elem.style.background = "blue";
+                    if (topPos == boxhg) {
+                        topFlag = false;
+                    }
+                } else if (leftFlag == false && topFlag == false) {
+                    leftPos--;
+                    elem.style.top = topPos + 'px';
+                    elem.style.left = leftPos + 'px';
+                    elem.style.background = "green";
+                    if (leftPos == 0) {
+                        topFlag = true;
+                        leftFlag == false;
+                    }
+                }
+
+            }
+        }
+
+    </script>
+</body>
+
+</html>

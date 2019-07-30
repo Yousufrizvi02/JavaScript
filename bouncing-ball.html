@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bouncing Ball</title>
+    <style>
+    .box{
+        width: 250px;
+        height: 250px;
+        border: 1px solid #333;
+        background: #746e23;
+    }
+    .ball{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #fff;
+        transform: rotate(30deg);
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+        box-shadow: 0px 0px 5px #fff;
+        background-color: red;
+        position: relative;
+        -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+        -webkit-animation-delay: 2s; /* Safari 4.0 - 8.0 */
+        animation-name: example;
+        animation-duration: 4s;
+        animation-delay: 2s;
+        animation-iteration-count:infinite;
+    }
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:30px; top:230px;}
+    50%  {background-color:blue; left:230px; top:60px;}
+    75%  {background-color:green; left:90px; top:230px;}
+    100% {background-color:red; left:0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:57px; top:230px;}
+    50%  {background-color:blue; left:114px; top:0px;}
+    75%  {background-color:green; left:171px; top:230px;}
+    100% {background-color:red; left:230px; top:0px;}
+}
+    .ball:after{
+        content: '//';
+        color: #fff;
+        padding: 3px;
+        font-size:25px;
+        line-height: 20px;
+        font-weight: 600;
+        transform: rotate(30deg);
+    }
+    </style>
+</head>
+<body>
+    <div class="box" id="color-box">
+        <div class="ball"></div>
+    </div>
+
+<script>
+
+</script>    
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .table {
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #494d71;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .table tr td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 0px;
+        }
+
+        .table a {
+            color: #64f7ff;
+            text-decoration: none;
+            background: black;
+            padding: 6px 10px;
+            display: inline-block;
+        }
+
+        .toolbox {
+            position: absolute;
+            display: none;
+        }
+
+        .tool-target {
+            display: inline-block;
+        }
+        
+        .toolbox span {
+            display: inline-block;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0c0c0cd1;
+            color: #e6e6e6;
+            padding: 15px;
+            z-index: 1;
+            width: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <table class="table">
+        <tr>
+            <td>S.No</td>
+            <td>Name</td>
+            <td>Details</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Suneel</td>
+            <td>
+                <div class="tool-target" id="d1">
+                    <a class="tooltip" href="#">Details</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Rajeev</td>
+            <td>
+                <div class="tool-target" id="d2">
+                    <a class="tooltip" href="#">Details</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Ahmad</td>
+            <td>
+                <div class="tool-target" id="d3">
+                    <a class="tooltip" href="#">Details</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Ravi</td>
+            <td>
+                <div class="tool-target" id="d4">
+                    <a class="tooltip" href="#">Details</a>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Amit</td>
+            <td>
+                <div class="tool-target" id="d5">
+                    <a class="tooltip" href="#">Details</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="toolbox d1">
+        <span>
+            Name : Suneel
+            <br> Age : 25
+            <br> City : Delhi
+        </span>
+    </div>
+    <div class="toolbox d2">
+        <span>
+            Name : Rajeev
+            <br> Age : 28
+            <br> City : Noida
+        </span>
+    </div>
+    <div class="toolbox d3">
+        <span>
+            Name : Ahmad
+            <br> Age : 31
+            <br> City : Lucknow
+        </span>
+    </div>
+    <div class="toolbox d4">
+        <span>
+            Name : Ravi
+            <br> Age : 29
+            <br> City : Agra
+        </span>
+    </div>
+    <div class="toolbox d5">
+        <span>
+            Name : Amit
+            <br> Age : 25
+            <br> City : NCR
+        </span>
+    </div>
+
+    <script>
+        var targetBtn = document.querySelectorAll('.tool-target');
+        var popupDetailBox = document.querySelectorAll('.toolbox');
+        for (var i = 0; i < targetBtn.length; i++) {
+            targetBtn[i].addEventListener("mousemove", showPopup, false);
+            targetBtn[i].addEventListener("mouseleave", hidePopup, false);
+        }
+
+        function showPopup(e) {
+            var getID = this.getAttribute('id');
+            for (var i = 0; i < popupDetailBox.length; i++) {
+                popupDetailBox[i].style.display = "none";
+            }
+            var obj = document.querySelector('.' + getID);
+            obj.style.display = "block";
+            obj.style.top = e.pageY + 20 + 'px';
+            obj.style.left = e.pageX + 'px';
+        }
+
+        function hidePopup() {
+            for (var i = 0; i < popupDetailBox.length; i++) {
+                popupDetailBox[i].style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

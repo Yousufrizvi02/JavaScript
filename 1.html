@@ -1,0 +1,72 @@
+<!document html>
+<html>
+    <head>
+    <title>Hello Java Script</title>
+    
+    </head>
+    <body>
+        <h1>Hello <span id="client">World</span></h1>
+        <input type="button" value="Send" onclick="document.getElementById('client').innerHTML='Ya Ali Madad'" >
+        <input type="button" value="Change Color" onclick="document.getElementById('client').style.color='red'" >
+        <br>
+        <hr>
+        
+        /*****************************/
+        /*****************************/
+        <br>
+        <h1>What's your name <span id="change"> ------ </span></h1>
+        <input type="button" onclick="abc();" value="Change">
+        
+        /*****************************/
+        /*****************************/
+        <h2 id="cartype"></h2>
+        <h2 id="funtype"></h2>
+        
+        /*****************************/
+        /*****************************/
+        
+        <h2>JavaScript Arrays</h2>
+        <h3 id="arrayDemo"></h3>
+        
+        /*****************************/
+        /*****************************/
+        
+        <h2>JavaScript Switch Statement</h2>
+        <a href="javascript:generateTable()">Create New Table</a>
+        <h4 id="table"></h4>
+        /*****************************/
+        /*****************************/
+        <script>
+            function abc(){
+                document.getElementById('change').innerHTML='Yousuf Raza Rizvi';
+            }
+            var car ={
+                Honda:"Civik",
+                Audi: "Smart",
+                Farari: "Ftype",
+                AllName: function(){
+                    //return this.Honda +" " + this.Audi +" " + this.Farari;
+                    return car['Honda']+' '+ car['Audi']+' '+ car['Farari'];
+            }
+            }
+            document.getElementById('cartype').innerHTML= car['Honda']+' '+ car['Audi']+' '+ car['Farari'];
+            document.getElementById('funtype').innerHTML = car.AllName(). length;
+            
+            var brand =["Polo", "Peter England", "Pentaloon", "UCB"];
+            document.getElementById('arrayDemo').innerHTML=brand[1];
+            
+        </script>
+        <script language="javascript" type="text/javascript">
+function generateTable()
+{
+   var tableNumber = 5;
+   var i = 0;
+   for(i=1; i<=10; i++) {
+    echo = "+ i +";
+   }
+}
+
+//-->
+</script>
+</body>
+</html>

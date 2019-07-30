@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Basic</title>
+    
+    <style>
+    
+    </style>
+    
+</head>
+<body onload="changeText()">
+    <div id="date"></div>
+    <div id="text">Hello yousuf</div>
+    <br>
+    <hr>
+    <br>
+    <div id="demo"><h2>Table</h2></div>
+    <br>
+    <div id="demo2"><h2>Table</h2></div>
+
+    <!-- <script>
+    document.getElementById('date').innerHTML = Date();
+    </script> -->
+    <script src="./script.js"></script>
+    <script>
+        // var x,y,z;
+        // x = 11;
+        // y = 5;
+        // z = x + y;
+
+        // for(var i=1; i < 11; i++) {
+        //     var value = i + " X " + z + " = " + i * z;
+        //     console.log(value);
+        // }
+
+
+var x, y, z;  // Statement 1
+x = 5;        // Statement 2
+y = 6;        // Statement 3
+z = x + y;    // Statement 4
+for(i=1; i<11; i++){
+var table= i + " X " + z + " = " + z*i;
+var abbTable = z*i;
+document.getElementById("demo").innerHTML += table + "<br>" ;
+document.getElementById("demo2").innerHTML += "+" + abbTable ;
+document.getElementById("demo2").innerHTML += "+" + abbTable ;
+var total = document.getElementById("demo2").innerHTML;
+console.log(total)
+}
+</script>
+</body>
+</html>

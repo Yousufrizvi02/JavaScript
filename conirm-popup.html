@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+    window.onload=function(){
+        var song = new Object();
+        song.newsong ="2018 latest song list";
+        song.oldSong = "1990 old song list";
+        document.getElementById('obj').innerHTML=song.newsong
+    }
+        </script>
+   
+</head>
+<body>
+    <script type="text/javascript">
+    function conf(){
+        var pop = confirm("do you agree for this");
+        setTimeout(function(){
+            if(pop == true){
+            document.getElementById('popup').innerHTML="Thank you";
+        }
+        else{
+            document.getElementById('popup').innerHTML="Sorry you are not agree";
+        }
+        },2000);
+    }
+    </script>
+    <div id="popup">Msg Here</div>
+    <h5 onclick="conf();">Click Me</h5>
+    <hr>
+    <h5>java script Object</h5>
+    
+<div id="obj"></div>
+
+<script>
+    //document.write("Song type " + song.newsong);
+</script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background: cadetblue;
+            font-family: monospace;
+        }
+
+        table {
+            width: 100%;
+            background: #ccc;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        table tr td {
+            padding: 10px 10px;
+            text-align: right;
+        }
+
+        table tr td a {
+            color: #fff;
+            text-decoration: none;
+            background: #9a6a6a;
+            padding: 3px 5px;
+            border: 1px solid #fff;
+        }
+
+        .tooltip-details {
+            background: #333;
+            display: inline-block;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            color: #fff;
+            width: 150px;
+            height: 70px;
+            font-size: 13px;
+            border: 1px solid #000;
+        }
+
+        .tooltip-details {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Java Script Tooltip</h1>
+
+    <table>
+
+        <tr>
+            <td>S.No</td>
+            <td>Name</td>
+            <td>Details</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Yousuf</td>
+            <td>
+                <a href="#" class="tool-target" data-id="1">Details</a>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Amit</td>
+            <td>
+                <a href="#" class="tool-target" data-id="2">Details</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Rahul</td>
+            <td>
+                <a href="#" class="tool-target" data-id="3">Details</a>
+            </td>
+        </tr>
+    </table>
+
+    <div class="tooltip-details d1" id="tooltip-details">
+
+    </div>
+    </div>
+    <script>
+        var app = app || {};
+        var data = {
+            "employees": [
+                { "empId": 1, "firstName": "John", "lastName": "Doe" },
+                { "empId": 2, "firstName": "Anna", "lastName": "Smith" },
+                { "empId": 3, "firstName": "Peter", "lastName": "Jones" }
+            ]
+        }
+        //var empDetails = dataStore.employees;
+        var targetBox = document.querySelectorAll('.tool-target');
+        var targetDetails = document.getElementById('tooltip-details');
+        app.showDetailsPopup = function () {
+            var getId = this.getAttribute('data-id');
+            var obj = data.employees[getId - 1];
+            var temp = '';
+            temp += "<span>Name : " + obj.firstName + "<br> Last Name : " + obj.lastName + "</span>";
+            targetDetails.innerHTML = temp;
+            app.setOffsetPossition();
+            targetDetails.style.visibility = "visible";
+        }
+        app.setOffsetPossition = function () {
+            var topPos = event.pageY + 20;
+            var leftPos = event.pageX + 10;
+            var wndWidth = window.innerWidth;
+            var wndHeight = window.innerHeight;
+            var boxHeight = targetDetails.offsetHeight;
+            var boxWidth = targetDetails.offsetWidth;
+            var targetBoxHeight = targetBox[0].offsetHeight;
+            if ((topPos + boxHeight) >= wndHeight) {
+                topPos = topPos - boxHeight - targetBoxHeight * 2;
+            }
+            if ((leftPos + boxWidth) >= wndWidth) {
+                leftPos = leftPos - boxWidth;
+            }
+            var showWidth = boxWidth + wndWidth;
+            targetDetails.style.top = topPos + 'px';
+            targetDetails.style.left = leftPos + 'px';
+        }
+        app.hideDetailsPopup = function () {
+            targetDetails.style.visibility = "hidden";
+        }
+        for (var i = 0; i < targetBox.length; i++) {
+            targetBox[i].addEventListener('mousemove', app.showDetailsPopup, false);
+            targetBox[i].addEventListener('mouseleave', app.hideDetailsPopup, false);
+        }
+    </script>
+
+</body>
+
+</html>

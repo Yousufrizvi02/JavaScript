@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="prod">
+
+    </div>
+    
+    
+    <script>
+  var emp, inth, txt, i;
+  emp = {
+      dev : ["amit", "ambrish", "hilal", "rathi"],
+      designer : ["yousuf", "manish", "vipul"]      
+  }
+  allemp = emp.dev.concat(emp.designer);
+   inth = emp.designer.length;
+   txt = "<ul>"
+   for(i=0; i<inth; i++){
+       txt += "<li>"+emp.designer[i]+"</li>";
+   }
+   txt += "</ul>"
+  console.log(txt);
+  document.getElementById("prod").innerHTML = txt;
+    </script>
+</body>
+</html>

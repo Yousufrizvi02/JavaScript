@@ -1,0 +1,51 @@
+<!-- remember to add Youtubes iframe script:
+<script src="https://www.youtube.com/iframe_api"></script> --> 
+
+<div class="yt_videos">
+    <iframe class="video_groups" src="https://www.youtube.com/embed/r4CH0al0ucs?enablejsapi=1&version=3&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+    <iframe class="video_groups" src="https://www.youtube.com/embed/lL9Zoc46ZG0?enablejsapi=1&version=3&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+    <iframe class="video_groups" src="https://www.youtube.com/embed/s1NZ2mkW0hM?enablejsapi=1&version=3&wmode=transparent" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+<script>
+ var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+ var players = [];
+
+function onYouTubeIframeAPIReady() {
+
+var predefined_players = document.getElementsByTagName('iframe');
+
+console.log("number of players: " + predefined_players.length);
+
+for(var i = 0; i < predefined_players.length; i++){
+predefined_players[i].id = "player" + i;
+  players[i] = new YT.Player("player" + i, {
+    events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+    }
+});
+}
+}
+
+
+function onPlayerReady() {
+//console.log("on load: ");
+// players[1].playVideo();
+    }
+
+    function onPlayerStateChange(event) {
+        var link = event.target.a.id;
+        var newstate = event.data;
+//        console.log(link + " has a state:" + newstate);
+if (newstate == YT.PlayerState.PLAYING) {
+    players.forEach(function(item, i) {
+        if (item.a.id != link) item.pauseVideo();
+    });
+}
+}
+</script>

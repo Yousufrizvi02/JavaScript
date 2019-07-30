@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .color-box {
+            background: cornflowerblue;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .btn {
+            background: brown;
+            color: #fff;
+            padding: 5px 10px;
+            border: 0;
+            margin-top: 30px;
+        }
+
+        #animation {
+            padding: 2px;
+            box-sizing: border-box;
+            position: absolute;
+            background-color: #b70000;
+            width: 40px;
+            height: 40px;
+            border-radius: 0%;
+            font-size: 16px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color-box" id="color-box" onclick="alert('It Div Tag')">
+        <span  onclick="alert('It span Tag')" id="animation">
+            <p onclick="alert('It p Tag')">Click me</p>
+        </span>
+    </div>
+   
+
+
+    <script>
+        
+    </script>
+</body>
+
+</html>

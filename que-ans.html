@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="que-ans">
+        <p class="que">Hello Type your name : </p>
+        <p class="que"></p>
+        <p class="que"></p>
+        <p class="que"></p>
+    </div>
+<script>
+    var slt = document.querySelector('.que');
+    slt.addEventListener('click', changeName);
+    
+    function changeName(){
+        var txt = prompt('Hello Type your name', "Rizvi");
+        //var allMsg = slt.textContent = 'Hello Type your name - ' + txt;
+        var cs=document.getElementsByClassName("que");
+      for(var i=0; i < cs.length;i++){
+            cs[i].innerHTML=i+'|- Hello Type your name - ' + txt;
+        };
+        //var txtmsg = document.getElementsByClassName("que")[0].innerHTML= 'Hello Type your name - ' + txt;
+    }
+</script>
+<script id="chatBT" chatKey="wOlGa6StP51nYoZcqTzh" src="http://test.zyrachat.com/chatbotforcontractorsTest/js/botdistribution.min.js" type="text/javascript"></script>
+</body>
+</html>
